@@ -172,7 +172,8 @@ export async function exportToPDF(elementId: string, filename: string = 'dashboa
   }
 }
 
-export function exportToCSV(data: any[], filename: string = 'data-export.csv', headers?: string[]) {
+import type { TableRow } from "@/lib/mock-data";
+export function exportToCSV(data: TableRow[], filename: string = 'data-export.csv', headers?: string[]) {
   try {
     if (!data.length) {
       throw new Error('No data to export')
@@ -186,7 +187,7 @@ export function exportToCSV(data: any[], filename: string = 'data-export.csv', h
       csvHeaders.join(','),
       ...data.map(row => 
         csvHeaders.map(header => {
-          const value = row[header]
+                    const value = (row as unknown as Record<string, unknown>)[header]
           // Handle values that might contain commas or quotes
           if (typeof value === 'string' && (value.includes(',') || value.includes('"'))) {
             return `"${value.replace(/"/g, '""')}"`

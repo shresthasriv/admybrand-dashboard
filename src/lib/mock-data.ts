@@ -10,9 +10,18 @@ export interface MetricCard {
 }
 
 export interface ChartDataPoint {
-  date: string
-  value: number
-  [key: string]: any
+  date?: string;
+  value?: number;
+  month?: string;
+  desktop?: number;
+  mobile?: number;
+  revenue?: number;
+  users?: number;
+  costs?: number;
+  profit?: number;
+  sessions?: number;
+  name?: string;
+  [key: string]: string | number | undefined;
 }
 
 export interface TableRow {
@@ -35,7 +44,7 @@ const generateDateRange = (days: number) => {
 }
 
 // Simulation state for realistic data correlation
-let simulationState = {
+const simulationState = {
   baseRevenue: 847352,
   baseUsers: 24567,
   baseConversions: 3428,
@@ -50,41 +59,40 @@ let simulationState = {
 // Generate correlated real-time data that affects all metrics
 export const generateRealTimeData = () => {
   const now = Date.now()
-  const timeDiff = now - simulationState.lastUpdate
-  const timeFactorMinutes = timeDiff / (1000 * 60) // Convert to minutes
-  
+  // const timeFactorMinutes = timeDiff / (1000 * 60) // Convert to minutes (unused)
+
   // Simulate market fluctuations (every 30 seconds chance to change trend)
   if (Math.random() < 0.1) {
     simulationState.dailyTrend = Math.random() < 0.7 ? 1 : Math.random() < 0.5 ? 0 : -1
   }
-  
+
   // Calculate velocity changes (momentum)
   simulationState.revenueVelocity += (Math.random() - 0.5) * 100
   simulationState.userVelocity += (Math.random() - 0.5) * 50
   simulationState.conversionVelocity += (Math.random() - 0.5) * 5
-  
+
   // Apply dampening to prevent extreme values
   simulationState.revenueVelocity *= 0.95
   simulationState.userVelocity *= 0.95
   simulationState.conversionVelocity *= 0.95
-  
+
   // Generate current real-time activity based on trends
   const trendMultiplier = simulationState.dailyTrend === 1 ? 1.2 : simulationState.dailyTrend === -1 ? 0.8 : 1
-  
+
   const activeUsers = Math.floor(
     (Math.random() * 800 + 2000) * trendMultiplier + simulationState.userVelocity
   )
-  
+
   const pageViews = Math.floor(activeUsers * (3.5 + Math.random() * 2)) // 3.5-5.5 pages per user
-  
+
   const conversionRate = (2.5 + Math.random() * 2 + simulationState.dailyTrend * 0.5) / 100 // 2.5-4.5%
   const conversions = Math.floor(pageViews * conversionRate)
-  
+
   const avgOrderValue = 150 + Math.random() * 100 + simulationState.dailyTrend * 20 // $150-$270
   const revenue = Math.floor(conversions * avgOrderValue)
-  
+
   simulationState.lastUpdate = now
-  
+
   return {
     activeUsers,
     pageViews,
@@ -196,20 +204,20 @@ export const trafficSourcesData = [
 ]
 
 // Monthly performance data (bar chart) - adapted for EvilCharts
-export const monthlyPerformanceData = Array.from({ length: 12 }, (_, i) => {
-  const date = subMonths(new Date(), 11 - i)
-  const revenue = Math.floor(Math.random() * 100000) + 50000
+export const monthlyPerformanceData: ChartDataPoint[] = Array.from({ length: 12 }, (_, i) => {
+  const dateObj = subMonths(new Date(), 11 - i);
+  const revenue = Math.floor(Math.random() * 100000) + 50000;
+  const costs = Math.floor(Math.random() * 40000) + 20000;
   return {
-    month: format(date, "MMM"),
+    date: format(dateObj, "yyyy-MM-dd"),
+    month: format(dateObj, "MMM"),
     desktop: revenue,
     revenue: revenue,
-    costs: Math.floor(Math.random() * 40000) + 20000,
-    profit: 0 // Will be calculated
-  }
-}).map(item => ({
-  ...item,
-  profit: item.revenue - item.costs
-}))
+    costs: costs,
+    profit: revenue - costs,
+    value: revenue // fallback for charts expecting value
+  };
+});
 
 // Daily active users data (line chart) - adapted for EvilCharts  
 export const dailyActiveUsersData: ChartDataPoint[] = generateDateRange(14).map((date, index) => ({

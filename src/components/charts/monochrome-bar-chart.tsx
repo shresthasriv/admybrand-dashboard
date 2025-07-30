@@ -21,10 +21,11 @@ const jetBrainsMono = JetBrains_Mono({
   weight: ["400", "500", "600", "700"],
 });
 
+import type { ChartDataPoint } from "@/lib/mock-data";
 interface MonochromeBarChartProps {
   title: string;
   description?: string;
-  data: any[];
+  data: ChartDataPoint[];
   dataKey: string;
   xAxisDataKey: string;
   height?: number;
@@ -38,7 +39,6 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function MonochromeBarChart({
-  title,
   description,
   data,
   dataKey,
@@ -76,7 +76,7 @@ export function MonochromeBarChart({
             <BarChart
               accessibilityLayer
               data={data}
-              width="100%"
+              width={400}
               height={height}
               onMouseLeave={() => setActiveIndex(undefined)}
               barCategoryGap="2%"
@@ -116,7 +116,7 @@ interface CustomBarProps extends SVGProps<SVGSVGElement> {
 }
 
 const CustomBar = (props: CustomBarProps) => {
-  const { fill, x, y, width, height, index, activeIndex, value, totalBars } = props;
+  const { fill, x, y, width, height, index, activeIndex, value } = props;
 
   // Custom variables
   const xPos = Number(x || 0);

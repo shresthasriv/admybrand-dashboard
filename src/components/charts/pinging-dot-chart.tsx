@@ -18,10 +18,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
 
+import type { ChartDataPoint } from "@/lib/mock-data";
 interface PingingDotChartProps {
   title: string;
   description?: string;
-  data: any[];
+  data: ChartDataPoint[];
   dataKey: string;
   xAxisDataKey: string;
   height?: number;
@@ -62,7 +63,7 @@ export function PingingDotChart({
           <LineChart
             accessibilityLayer
             data={data}
-            width="100%"
+            width={600}
             height={height}
             margin={{
               left: 12,

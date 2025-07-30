@@ -7,7 +7,6 @@ import {
   Users, 
   Target, 
   TrendingUp, 
-  TrendingDown,
   ArrowUpIcon,
   ArrowDownIcon,
   Minus

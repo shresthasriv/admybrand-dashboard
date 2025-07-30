@@ -52,7 +52,7 @@ export function DataTable({ data, title, description }: DataTableProps) {
 
   // Filter and sort data
   React.useEffect(() => {
-    let filtered = data.filter(row => {
+    const filtered = data.filter(row => {
       const matchesSearch = row.campaign.toLowerCase().includes(searchTerm.toLowerCase())
       const matchesStatus = statusFilter === "all" || row.status === statusFilter
       return matchesSearch && matchesStatus

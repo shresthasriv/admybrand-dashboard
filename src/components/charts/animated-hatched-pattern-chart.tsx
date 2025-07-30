@@ -19,10 +19,11 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
 import React from "react";
 
+import type { ChartDataPoint } from "@/lib/mock-data";
 interface AnimatedHatchedPatternAreaChartProps {
   title: string;
   description?: string;
-  data: any[];
+  data: ChartDataPoint[];
   dataKey1: string;
   dataKey2?: string;
   xAxisDataKey: string;
@@ -74,7 +75,7 @@ export function AnimatedHatchedPatternAreaChart({
           <AreaChart 
             accessibilityLayer 
             data={data}
-            width="100%"
+            width={800}
             height={height}
           >
             <CartesianGrid vertical={false} strokeDasharray="3 3" />

@@ -4,8 +4,6 @@ import * as React from "react"
 import { DateRange } from "react-day-picker"
 import { subDays } from "date-fns"
 import { motion } from "motion/react"
-import Link from "next/link"
-
 // Components
 import { ThemeToggle } from "@/components/theme-toggle"
 import { AnimatedHatchedPatternAreaChart } from "@/components/charts/animated-hatched-pattern-chart"
@@ -22,7 +20,6 @@ import {
   Download, 
   RefreshCw,
   BarChart3,
-  Activity
 } from "lucide-react"
 
 // Data and utilities

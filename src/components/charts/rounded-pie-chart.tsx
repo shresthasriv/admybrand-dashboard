@@ -17,10 +17,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
 
+import type { ChartDataPoint } from "@/lib/mock-data";
 interface RoundedPieChartProps {
   title: string;
   description?: string;
-  data: any[];
+  data: ChartDataPoint[];
   dataKey: string;
   nameKey: string;
   height?: number;
@@ -61,7 +62,6 @@ export function RoundedPieChart({
   description,
   data,
   dataKey,
-  nameKey,
   height = 250
 }: RoundedPieChartProps) {
   return (
@@ -85,7 +85,7 @@ export function RoundedPieChart({
           className="w-full [&_.recharts-text]:fill-background mx-auto aspect-square"
           style={{ maxHeight: `${height}px` }}
         >
-          <PieChart width="100%" height={height}>
+          <PieChart width={height} height={height}>
             <ChartTooltip
               content={<ChartTooltipContent nameKey={dataKey} hideLabel />}
             />
