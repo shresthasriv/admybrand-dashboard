@@ -1,36 +1,226 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ADmyBRAND Insights - Analytics Dashboard
 
-## Getting Started
+ADmyBRAND Insights is a modern analytics dashboard for digital marketing agencies, featuring real-time data visualization, interactive charts, advanced filtering, and a beautiful, responsive UI built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Setup Instructions
 
+### Prerequisites
+- Node.js 18 or higher
+- npm (or yarn) package manager
+
+### Installation & Running Locally
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/shresthasriv/admybrand-dashboard.git
+   cd admybrand-analytics
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. **Open your browser:**
+   Visit [http://localhost:3000](http://localhost:3000) to view the dashboard.
+
+### Build for Production
 ```bash
-npm run dev
+npm run build
+npm start
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn build
+yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Feature Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Dashboard & Analytics
+- **Overview Metrics Cards:** Key performance indicators with animated trend indicators
+- **Interactive Charts:** Area, bar, line, and pie charts powered by Recharts
+- **Real-time Data Updates:** Live statistics update every 5 seconds
+- **Advanced Data Table:** Sortable, filterable, paginated campaign data
+- **Date Range Filtering:** Flexible date picker for custom time periods
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### UI/UX & Design
+- **Modern Sidebar Navigation:** Retractable sidebar with user profile and navigation
+- **Dark/Light Mode:** Seamless theme switching with smooth transitions
+- **Responsive Design:** Optimized for desktop, tablet, and mobile
+- **Smooth Animations:** Micro-interactions and animated transitions
+- **Loading Skeletons:** Beautiful loading states for better UX
 
-## Learn More
+### Technical Highlights
+- **Next.js 14:** App Router, TypeScript, and fast refresh
+- **shadcn/ui & Tailwind CSS:** Modern, consistent component styling
+- **Lucide Icons:** Crisp, scalable iconography
+- **Export Functionality:** PDF and CSV export for reports and data
+- **Mock Data:** Realistic analytics and campaign data for demo/testing
 
-To learn more about Next.js, take a look at the following resources:
+### Subtle & Useful Features
+- **Sticky Header:** Always-visible navigation and actions
+- **Animated Sidebar Rail:** Collapsible sidebar with smooth expand/collapse
+- **Theme-aware Buttons:** Navigation buttons adapt to dark/light mode
+- **Accessibility:** ARIA labels, keyboard navigation, and color contrast
+- **Performance:** Lazy loading, optimized images, and efficient re-renders
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Charts**: Recharts
+- **Icons**: Lucide React
+- **Date Handling**: date-fns
+- **Export**: html2canvas + jsPDF
+- **Theme**: next-themes
 
-## Deploy on Vercel
+## 📁 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── layout.tsx         # Root layout with theme provider
+│   ├── page.tsx           # Main dashboard page
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── ui/                # shadcn/ui components
+│   ├── charts/            # Chart components (Area, Bar, Line, Pie)
+│   ├── data-table.tsx     # Advanced data table
+│   ├── metric-card.tsx    # KPI metric cards
+│   ├── theme-toggle.tsx   # Dark/light mode toggle
+│   ├── theme-provider.tsx # Theme context provider
+│   ├── date-range-picker.tsx # Date range selector
+│   └── loading-skeleton.tsx  # Loading components
+└── lib/                   # Utilities and data
+    ├── mock-data.ts       # Sample analytics data
+    ├── export-utils.ts    # Export functionality
+    └── utils.ts           # shadcn/ui utilities
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎯 Key Components
+
+### Metric Cards
+Display key performance indicators with:
+- Animated trend indicators
+- Color-coded change indicators
+- Hover effects and transitions
+
+### Interactive Charts
+Four chart types powered by Recharts:
+- **Area Chart** - Revenue trends over time
+- **Line Chart** - User engagement metrics
+- **Bar Chart** - Monthly performance comparisons
+- **Pie Chart** - Traffic source breakdown
+
+### Advanced Data Table
+Features include:
+- **Sorting** - Click column headers to sort
+- **Filtering** - Search campaigns and filter by status
+- **Pagination** - Navigate through large datasets
+- **Export** - Download filtered data as CSV
+
+### Real-time Features
+- Live data updates every 5 seconds
+- Animated counters and indicators
+- Refresh button with loading states
+- Real-time activity monitor
+
+## 🎨 Design System
+
+### Colors
+- **Primary**: Blue (#3b82f6)
+- **Secondary**: Purple (#8b5cf6) 
+- **Success**: Green (#10b981)
+- **Warning**: Orange (#f59e0b)
+- **Error**: Red (#ef4444)
+
+### Typography
+- **Headings**: Geist Sans font family
+- **Body**: Consistent font weights and sizes
+- **Monospace**: Geist Mono for code and data
+
+### Spacing
+- 8px grid system for consistent spacing
+- Responsive margins and padding
+- Consistent component sizing
+
+## 📱 Responsive Design
+
+- **Desktop**: Full-featured layout with sidebar navigation
+- **Tablet**: Responsive grid adjustments
+- **Mobile**: Optimized touch interactions and layout
+
+## 🌙 Dark Mode
+
+Seamless dark/light mode switching with:
+- System preference detection
+- Smooth transitions between themes
+- Persistent theme selection
+- Properly styled charts and components
+
+## 📊 Mock Data
+
+The dashboard uses realistic mock data including:
+- **Revenue metrics** - Monthly and daily revenue data
+- **User analytics** - Active users and engagement
+- **Campaign performance** - Marketing campaign ROI
+- **Traffic sources** - Breakdown by acquisition channel
+
+## 🔧 Export Features
+
+### PDF Export
+- Full dashboard export to PDF
+- Professional formatting with headers
+- High-resolution chart rendering
+- Loading states during generation
+
+### CSV Export
+- Campaign data export to CSV
+- Filtered data export
+- Proper CSV formatting and encoding
+
+## 🚀 Performance Optimizations
+
+- **Component lazy loading** for better initial load times
+- **Optimized images** using Next.js Image component
+- **Efficient re-renders** with React hooks optimization
+- **Responsive design** without layout shifts
+
+## 🔮 Future Enhancements
+
+- **API Integration** - Connect to real analytics APIs
+- **User Authentication** - Add login and user management
+- **Custom Dashboards** - Allow users to create custom views
+- **More Chart Types** - Add heatmaps, scatter plots, etc.
+- **Email Reports** - Scheduled report generation
+- **Mobile App** - React Native companion app
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 🙏 Acknowledgments
+
+- **shadcn/ui** for the excellent component library
+- **Recharts** for powerful chart components
+- **Tailwind CSS** for utility-first styling
+- **Next.js** for the amazing React framework
+- **Lucide** for beautiful icons
+
+---
+
+**Built with ❤️ for the modern web**
